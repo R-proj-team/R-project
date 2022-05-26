@@ -6,3 +6,5 @@
 * [Example project using R and same DS](https://www.r-bloggers.com/2019/09/heart-disease-prediction-from-patient-data-in-r/?fbclid=IwAR12PeAB7o75D7ByS_gigqYCuGXbEWbYYcj8kXWrbJN4ZxDkwMqb_NWyRXI)
 * [Git and Github for Beginners](https://www.youtube.com/watch?v=RGOj5yH7evk)
 * [ML in R](https://www.datacamp.com/tutorial/machine-learning-in-r?fbclid=IwAR3mEO4Ub-tls1NAYaWe_7uHjn6DXvfty4ltlaX-o2hCktY1ozT_jQCwTy8)
+* [Notebooks with R](https://bookdown.org/yihui/rmarkdown/notebook.html)
+* [R project structure - best practices](https://www.r-bloggers.com/2018/08/structuring-r-projects/)
