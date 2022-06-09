@@ -44,5 +44,4 @@ class_age_cat <- data.frame(
 
 tab_3 <- merge(tab_2, class_age_cat, by = "AgeCategory", all.x =TRUE)
 
-write.csv(tab_3,"../preprocessed/Preprocessed_data.csv")
-
+write.csv(tab_3,"../preprocessed/data_preprocessed.csv")
