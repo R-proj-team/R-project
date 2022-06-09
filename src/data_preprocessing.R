@@ -1,5 +1,5 @@
 working_dir <- paste(substr(getwd(), 1, nchar(getwd()) - 3), "data/raw", sep="")
-setwd("C:/Users/Micha³/R-project/data/preprocessed")
+setwd(working_dir)
 getwd()
 
 tab <- read.csv("heart_2020_cleaned.csv")
@@ -44,4 +44,5 @@ class_age_cat <- data.frame(
 
 tab_3 <- merge(tab_2, class_age_cat, by = "AgeCategory", all.x =TRUE)
 
-write.csv(tab_3,"Preprocessed_data.csv")
+write.csv(tab_3,"../preprocessed/Preprocessed_data.csv")
+
