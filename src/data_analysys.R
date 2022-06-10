@@ -89,17 +89,38 @@ PieDonut(PD, aes(Sex, AgeCategory, count=n),r0=0.4, r1=1, r2=1.2,selected=1,labe
 #___________________________________________________________________________________________________________________
 
 library(Hmisc)
+library(corrplot)
+
+
+#macierz korelacji dla ludzi u których wyst¹pi³ zawa³
 domacierzy <- tabelka %>% filter(HeartDisease==1)
 domacierzy <- domacierzy[,c(5:21)]
-
 res <- cor(domacierzy)
 cor(domacierzy, use = "complete.obs")
 res <- res[c(1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17),c(1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17)]
 
-
-
-library(corrplot)
 corrplot(res, type = "upper", order = "hclust", 
-         tl.col = "black", tl.srt = 90
-)
+         tl.col = "black", tl.srt = 90)
+
+
+#macierz korelacji dla ludzi u których nie by³o problemów z sercem
+domacierzy2 <- tabelka %>% filter(HeartDisease==0)
+domacierzy2 <- domacierzy2[,c(5:21)]
+res2 <- cor(domacierzy2)
+cor(domacierzy2, use = "complete.obs")
+res2 <- res2[c(1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17),c(1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17)]
+
+corrplot(res2, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 90)
+
+
+
+#macierz korelacji dla wszystkich przebadanych
+domacierzy3 <- tabelka[,c(4:21)]
+res3 <- cor(domacierzy3)
+cor(domacierzy3, use = "complete.obs")
+res3 <- res3[c(1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18),c(1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18)]
+
+corrplot(res3, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 90)
 
