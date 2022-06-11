@@ -81,12 +81,8 @@ PD = data %>% group_by(AgeCategory, Sex) %>% summarise(n = sum(wektorwartosci))
 print(PD)
 
 PieDonut(PD, aes(Sex, AgeCategory, count=n),r0=0.4, r1=1, r2=1.2,selected=1,labelposition=0, title = "Iloœæ ataków serca z podzia³em na p³eæ i grupê wiekow¹\n0 - Kobiety  1 - Mê¿czyŸni")
-#___________________________________________________________________________________________________________________
 
-
-#zrobic histogram ile jest ludzi z atakiem i bez
-
-#___________________________________________________________________________________________________________________
+#________________________________________________________________________________________________________________
 
 library(Hmisc)
 library(corrplot)
@@ -124,3 +120,55 @@ res3 <- res3[c(1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18),c(1,2,3,5,6,7,8,9,10,
 corrplot(res3, type = "upper", order = "hclust", 
          tl.col = "black", tl.srt = 90)
 
+#___________________________________________________________________________________________________________________
+
+tbmi <- tabelka
+#round(tbmi$BMI)
+
+tbmi$HeartDisease <- ifelse(pzs$HeartDisease %in% c("1"),"Yes", "No")
+ggplot(tbmi,aes(x = BMI)) +
+  geom_histogram(bins = 40,aes(fill = HeartDisease)) +
+  geom_histogram(bins = 40, fill =NA , color = 'black')+
+ggtitle("Podzia³ badanych wg BMI oraz wystêpowania u nich problemów sercowych")+
+  theme_minimal()
+
+
+
+pzs <- tabelka
+#pzs <- pzs %>% filter(MentalHealth>0) 
+pzs$HeartDisease <- ifelse(pzs$HeartDisease %in% c("1"),"Yes", "No")
+ggplot(pzs,aes(x = PhysicalActivity)) +
+  geom_histogram(bins = 2,aes(fill = HeartDisease)) +
+  geom_histogram(bins = 2, fill =NA , color = 'black')+
+  ggtitle("Ile badanych prowadzi lub nie prowadzi aktywnoœæi fizycznej")+
+  theme_minimal()
+
+
+spanko <- tabelka
+spanko$HeartDisease <- ifelse(spanko$HeartDisease %in% c("1"),"Yes", "No")
+ggplot(spanko,aes(x = SleepTime)) +
+  geom_histogram(bins = 25,aes(fill = HeartDisease)) +
+  geom_histogram(bins = 25, fill =NA , color = 'black') +
+  ggtitle("Zale¿noœæ œrednich godzin snu od problemów sercowych")+
+  theme_minimal()
+
+
+mental <- tabelka
+mental <- mental %>% filter(MentalHealth>0)
+mental$HeartDisease <- ifelse(mental$HeartDisease %in% c("1"),"Yes", "No")
+ggplot(mental,aes(x = MentalHealth)) +
+  geom_histogram(bins = 10,aes(fill = HeartDisease)) +
+  geom_histogram(bins = 10, fill =NA , color = 'black')+
+  ggtitle("mental")+
+  theme_minimal()
+
+phys <- tabelka
+phys <- phys %>% filter(PhysicalHealth>0)
+phys$HeartDisease <- ifelse(phys$HeartDisease %in% c("1"),"Yes", "No")
+ggplot(phys,aes(x = PhysicalHealth)) +
+  geom_histogram(bins = 10,aes(fill = HeartDisease)) +
+  geom_histogram(bins = 10, fill =NA , color = 'black')+
+  ggtitle("phys")+
+  theme_minimal()
+
+#________________________________________________________________________________________________
